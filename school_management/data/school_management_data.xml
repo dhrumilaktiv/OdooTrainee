@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="teacher_1" model="teacher.info">
+            <field name="name">Pragnesh</field>
+            <field name="teacher_school_id">pragnesh01</field>
+            <field name="subject">Maths</field>
+            <field name="gender">male</field>
+        </record>
+
+        <record id="teacher_2" model="teacher.info">
+            <field name="name">Tarun</field>
+            <field name="teacher_school_id">tarun02</field>
+            <field name="subject">Physics</field>
+            <field name="gender">male</field>
+        </record>
+
+        <record id="teacher_3" model="teacher.info">
+            <field name="name">Nikul</field>
+            <field name="teacher_school_id">nikul03</field>
+            <field name="subject">Biology</field>
+            <field name="gender">male</field>
+
+            <!-- below line is used for to create demo data of One2many field -->
+
+            <field name="student_ids" eval="[(0, 0, {'name': 'Amit', 'birthdate': DateTime.strptime('2005-07-23','%Y-%m-%d'), 'roll_number': 59}),
+                                            (0, 0, {'name': 'biren', 'birthdate': DateTime.strptime('2005-07-23','%Y-%m-%d'), 'roll_number': 60})]"/>
+        </record>
+
+        <record id="sport_1" model="sport.info">
+            <field name="sport_name">Cricket</field>
+            <field name="entry_fee">300</field>
+        </record>
+
+        <record id="sport_2" model="sport.info">
+            <field name="sport_name">Football</field>
+            <field name="entry_fee">400</field>
+        </record>
+
+        <record id="sport_3" model="sport.info">
+            <field name="sport_name">Kabaddi</field>
+            <field name="entry_fee">200</field>
+        </record>
+
+        <record id="stud_1" model="student.info">
+            <field name="name">Kush</field>
+            <field name="birthdate" eval="DateTime.strptime('2000-04-25','%Y-%m-%d')"/>
+            <field name="roll_number">13</field>
+
+            <!-- below line is used for to create demo data Many2one field -->
+
+            <field name="teacher_id" ref="teacher_1"/>
+
+            <!-- below line is used for to create demo data Many2many field -->
+
+            <field name="sport_ids" eval="[(6, 0, [ref('sport_2'),ref('sport_3')])]"/>
+        </record>
+
+        <record id="stud_2" model="student.info">
+            <field name="name">Pratik</field>
+            <field name="birthdate" eval="DateTime.strptime('2005-07-23','%Y-%m-%d')"/>
+            <field name="roll_number">14</field>
+            <field name="teacher_id" ref="teacher_2"/>
+            <field name="sport_ids" eval="[(6, 0, [ref('sport_1'),ref('sport_3')])]" />
+        </record>
+
+    </data>
+</odoo>

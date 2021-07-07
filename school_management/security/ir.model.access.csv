@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_info,access_student_info,model_student_info,school_management.group_student_user,1,0,1,0
+access_sport_info,access_sport_info,model_sport_info,school_management.group_sport_user,1,0,0,0
+access_partcipants_info,access_partcipants_info,model_participants_info,school_management.group_participants_user,1,0,0,0
+access_teacher_info,access_teacher_info,model_teacher_info,school_management.group_teacher_user,1,1,1,1
+access_student_teacher,access_student_teacher,model_student_info,school_management.group_teacher_user,1,1,1,1
+access_sport_teacher,access_sport_teacher,model_sport_info,school_management.group_teacher_user,1,1,1,1
+access_participants_teacher,access_participants_teacher,model_participants_info,school_management.group_teacher_user,1,1,1,1
+access_teacher_student,access_teacher_student,model_teacher_info,school_management.group_student_user,1,0,1,0
+access_sport_student,access_sport_student,model_sport_info,school_management.group_student_user,1,0,1,0
+access_partcipants_student,access_partcipants_student,model_participants_info,school_management.group_student_user,1,0,1,0

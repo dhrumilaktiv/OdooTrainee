@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="ir.ui.view" id="sport_info_tree_view">
+        <field name="name">sport.info.tree.view</field>
+        <field name="model">sport.info</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="sport_name"/>
+              <field name='entry_fee'/>
+              <field name='is_national_level'/>
+            </tree>
+        </field>
+  </record>
+
+  <record model="ir.ui.view" id="sport_info_form_view">
+        <field name="name">sport.info.form.view</field>
+        <field name="model">sport.info</field>
+        <field name="arch" type="xml">
+          <form>
+          	<sheet>
+          		<group>
+                <group>
+                  <field name="sport_name"/>
+          				<field name="entry_fee"/>
+                  <field name="is_national_level"/>
+                  <field name="contact_name"/>
+                </group>
+          		</group>
+          	</sheet>
+          </form>
+        </field>  
+  </record>
+
+  <record model="ir.ui.view" id="sport_search_view">
+    <field name="name">sport.search.view</field>
+    <field name="model">sport.info</field>
+    <field name="arch" type="xml">
+      <search string="Search Sport">
+        <field name="sport_name"/>
+        <field name="entry_fee"/>
+      </search>
+    </field>
+  </record>        
+
+  <record id="sport_info_view" model="ir.actions.act_window">
+      <field name="name">Sport</field>
+      <field name="res_model">sport.info</field>
+      <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- <menuitem id="school_root" name="School"/> -->
+  <menuitem id="sport_nav" name="Sport" parent="school_root" action="sport_info_view"/>
+
+</odoo>

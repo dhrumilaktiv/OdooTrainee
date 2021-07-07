@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="ir.ui.view" id="teacher_info_tree_view">
+        <field name="name">teacher.info.tree.view</field>
+        <field name="model">teacher.info</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name='name'/>
+              <field name="teacher_school_id"/>
+              <field name='subject'/>
+              <field name='experience'/>
+              <field name='gender' widget='radio' options="{'horizontal': true}"/>
+              <field name="email"/>
+            </tree>
+        </field>
+  </record>
+
+  <record model="ir.ui.view" id="teacher_info_form_view">
+        <field name="name">teacher.info.form.view</field>
+        <field name="model">teacher.info</field>
+        <field name="arch" type="xml">
+          <form>
+          	<sheet>
+              <h1>
+                <field name="name" default_focus="1" placeholder="Enter Name"/>
+              </h1>
+          		<group>
+                <group>
+                  <field name="teacher_school_id"/>
+          				<field name="subject"/>
+          				<field name="experience"/>
+                  <field name='gender' widget='radio' options="{'horizontal': true}"/>
+                  <field name="email"/>
+                </group>
+          		</group>
+              <notebook>
+                <page string="Students">
+                    <field name="student_ids">
+                      <tree>
+                        <field name="name"/>
+                        <field name="roll_number"/>
+                        <field name="gender"/>
+                      </tree>
+                    </field>
+                </page>
+              </notebook>
+          	</sheet>
+          </form>
+        </field>  
+  </record>
+
+  <record model="ir.ui.view" id="teacher_search_view">
+    <field name="name">teacher.search.view</field>
+    <field name="model">teacher.info</field>
+    <field name="arch" type="xml">
+      <search string="Search Teacher">
+        <field name="name"/>
+        <field name="experience"/>
+        <filter string="Male" name="male" domain="[('gender','=','male')]"/>
+        <filter string="Female" name="female" domain="[('gender','=','female')]"/>
+        <filter string="Others" name="others" domain="[('gender','=','others')]"/>
+        <!-- <group expand="1" string="Standard_groupBy">
+          <field string="Standard" name="standard" context="{'group_by':'standard'}"/>
+        </group> -->
+      </search>
+    </field>
+  </record>        
+
+  <record id="teacher_info_view" model="ir.actions.act_window">
+      <field name="name">Teacher</field>
+      <field name="res_model">teacher.info</field>
+      <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- <menuitem id="school_root" name="School"/> -->
+  <menuitem id="teacher_nav" name="Teacher" parent="school_root" action="teacher_info_view"/>
+
+</odoo>
